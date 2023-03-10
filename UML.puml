@@ -1,0 +1,23 @@
+@startuml
+class org.example.proxy.HeavyObjectProxy {
+- HeavyObject heavyObject
++ <<Create>> HeavyObjectProxy(HeavyObject)
++ void operation(String)
+}
+interface org.example.intrf.HeavyObject {
+~ void operation(String)
+}
+class org.example.Main {
++ {static} void main(String[])
+}
+class org.example.impl.HeavyObjectImpl {
+- String workChunk
++ String getWorkChunk()
++ void setWorkChunk(String)
++ void operation(String)
+}
+
+
+org.example.intrf.HeavyObject <|.. org.example.proxy.HeavyObjectProxy
+org.example.intrf.HeavyObject <|.. org.example.impl.HeavyObjectImpl
+@enduml
